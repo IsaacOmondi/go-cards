@@ -31,7 +31,7 @@ func (d deck) print() {
 		fmt.Println(i, card)
 	}
 }
-
+// this functions returns the number of cards in hand and the remaining cards 
 func deal(d deck, handSize int) (deck, deck) {
 	return d[:handSize], d[handSize:]
 }
