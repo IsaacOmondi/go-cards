@@ -1,7 +1,9 @@
 package main
 
 import (
+	"io/ioutil"
 	"fmt"
+	"strings"
 )
 
 //Create a new type of 'deck'
@@ -31,7 +33,15 @@ func (d deck) print() {
 		fmt.Println(i, card)
 	}
 }
-// this functions returns the number of cards in hand and the remaining cards 
+// this function returns the number of cards in hand and the remaining cards 
 func deal(d deck, handSize int) (deck, deck) {
 	return d[:handSize], d[handSize:]
+}
+
+func (d deck) toString() string{
+	return strings.Join([]string(d), ",")
+}
+
+func (d deck) saveToFile(filename string) error {
+	return ioutil.WriteFile(filename, []byte(d.toString()), 0666)
 }
